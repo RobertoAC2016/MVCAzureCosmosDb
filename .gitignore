@@ -1,0 +1,7 @@
+.vs
+.DS_Store
+.vscode
+.coverage
+obj
+bin
+

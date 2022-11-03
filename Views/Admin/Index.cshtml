@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MVCConAzure.cs.user>
+
+<p>
+    <a asp-action="NewUserForm">Create New</a>  @*Vamos a crear este formulario para crear un nuevo usuario*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                <!--Aqui se utilizan los estilos de fontawesome-->
+                <a href="@Url.Action("Edit", "Admin", new { id = item.id })" class="btn btn-primary">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                @Html.ActionLink("Detail", "Detail", "Admin", new { id = item.id }, htmlAttributes: new { @class = "btn btn-info", @style = "text-decoration-line:none" } )
+                @Html.ActionLink("Delete", "Delete", "Admin", new { id = item.id }, htmlAttributes: new { @class = "btn btn-danger", @style = "text-decoration-line:none" } )
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
